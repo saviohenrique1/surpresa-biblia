@@ -1,0 +1,1000 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.4">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="pt-BR"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Surpresa Bíblica&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&amp;display=swap" rel="stylesheet"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'EB Garamond', serif;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #fdfaf6; /* Fundo pergaminho muito claro */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #44281d; /* Marrom escuro para texto principal */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.card {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: rgba(245, 236, 224, 0.85); /* Pergaminho mais escuro, semi-transparente */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 2px solid #c8b7a6; /* Borda de pedra clara */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 4px 15px rgba(0,0,0,0.1);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.3s ease;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.2s ease;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(0);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 0.25rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #795548;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 2px 5px rgba(0,0,0,0.15);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn:hover {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(-2px);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 4px 10px rgba(0,0,0,0.2);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn:disabled {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>opacity: 0.5;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: not-allowed;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #a1887f;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn-option:disabled {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>opacity: 0.7;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: not-allowed;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.correct {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>animation: flash-green 1s ease;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.incorrect {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>animation: flash-red 1s ease;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>@keyframes flash-green {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>0%, 100% { background-color: #388e3c; border-color: #2e7d32; color: #ffffff; }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>50% { background-color: #4caf50; border-color: #388e3c; color: #ffffff;}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>@keyframes flash-red {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>0%, 100% { background-color: #c62828; border-color: #b71c1c; color: #ffffff;}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>50% { background-color: #d32f2f; border-color: #c62828; color: #ffffff;}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.active-team-card {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 3px solid #b5832f;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 0 15px rgba(181, 131, 47, 0.7);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.score-update {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>animation: score-pop 0.5s ease-out;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>@keyframes score-pop {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>0% { transform: scale(1); }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>50% { transform: scale(1.4); color: #856a1b; }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>100% { transform: scale(1); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.card-shuffle-animation {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 3rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>animation: shuffle 1.5s ease-in-out;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>@keyframes shuffle {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>0% { transform: rotate(0deg) scale(1); opacity: 1;}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>25% { transform: rotate(10deg) scale(1.1); }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>50% { transform: rotate(-10deg) scale(1.1); }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>75% { transform: rotate(5deg) scale(1.1); }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>100% { transform: rotate(0deg) scale(1.2); opacity: 0;}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>#teams-screen, #difficulty-screen, #game-screen, #end-screen {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body class="min-h-screen flex items-center justify-center p-4"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="container mx-auto max-w-5xl text-center"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Tela de Regras --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="rules-screen"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- IMPORTANTE: Para o logotipo aparecer, salve a imagem "Surpresa Bíblia.png" na mesma pasta que este arquivo HTML. --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;img src="Surpresa Bíblia.png" alt="Logotipo Surpresa Bíblica" class="mx-auto mb-4 w-3/4 md:w-1/2" onerror="this.style.display='none'; document.getElementById('title-text').style.display='block'"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1 id="title-text" class="text-6xl md:text-7xl font-bold text-[#5d4037] mb-4" style="display: none;"&gt;SURPRESA BÍBLICA&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-2xl text-[#6d4c41] mb-8"&gt;Um jogo de conhecimento e reviravoltas!&lt;/p&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="rules-container" class="card p-6 rounded-lg max-w-3xl mx-auto mb-8 text-left"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 class="text-2xl font-bold text-[#6d4c41] mb-3 text-center"&gt;Regras do Jogo&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;ul class="list-disc list-inside space-y-3 text-[#4e342e] text-lg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;O jogo consiste em &lt;strong&gt;10 rodadas&lt;/strong&gt; de perguntas bíblicas.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;Em cada rodada, todas as equipes respondem a uma pergunta.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;Em sua vez, uma equipe pode escolher &lt;strong&gt;usar a "Surpresa"&lt;/strong&gt; em vez de responder à pergunta.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;Se uma equipe chegar à 10ª rodada sem ter usado sua Surpresa, ela será &lt;strong&gt;ativada automaticamente&lt;/strong&gt;.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;Se houver empate no final das 10 rodadas, o jogo entra em &lt;strong&gt;Morte Súbita&lt;/strong&gt; até haver um único vencedor.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;hr class="border-t-2 border-[#c8b7a6] my-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 class="text-2xl font-bold text-[#6d4c41] mb-3 text-center"&gt;As Surpresas&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;ul class="list-none space-y-2 text-[#4e342e] text-lg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;strong&gt;Bênção Divina:&lt;/strong&gt; Sua equipe ganha 200 pontos.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;strong&gt;Prova de Fé:&lt;/strong&gt; Sua equipe perde 100 pontos.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;strong&gt;Coleta Especial:&lt;/strong&gt; Escolha uma equipe para coletar 150 pontos.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;strong&gt;O Bom Samaritano:&lt;/strong&gt; Escolha uma equipe para ofertar 150 de seus pontos.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;strong&gt;Oferta Voluntária:&lt;/strong&gt; Dê 100 de seus pontos para a equipe com a menor pontuação.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;strong&gt;Jubileu:&lt;/strong&gt; Troque sua pontuação com a equipe que está em primeiro lugar.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;button id="go-to-teams-btn" class="btn w-full max-w-md mx-auto bg-[#8d6e63] hover:bg-[#6d4c41] text-white font-bold py-3 px-5 text-xl"&gt;Entendido, vamos jogar!&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Tela de Montar Equipes --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="teams-screen"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;h1 class="text-6xl md:text-7xl font-bold text-[#5d4037] mb-8"&gt;Montar Equipes&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;div class="card p-6 rounded-lg max-w-md mx-auto"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-2xl font-bold mb-4 text-[#6d4c41]"&gt;Adicionar Equipes (2 a 5)&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex gap-2 mb-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;input type="text" id="team-name-input" placeholder="Nome da Equipe" class="w-full bg-[#fdfaf6] text-[#4e342e] p-3 rounded-md border-2 border-[#a1887f] focus:outline-none focus:ring-2 focus:ring-[#8d6e63]"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button id="add-team-btn" class="btn bg-[#8d6e63] hover:bg-[#6d4c41] text-white font-bold py-3 px-5"&gt;Adicionar&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="teams-list" class="text-left"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;!-- Nomes das equipes aparecerão aqui --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button id="continue-to-difficulty-btn" class="btn w-full bg-[#4caf50] hover:bg-[#388e3c] text-white font-bold py-3 px-5 mt-6" disabled&gt;Continuar&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button id="back-to-rules-btn" class="btn bg-transparent border-none text-[#6d4c41] hover:text-[#44281d] font-bold py-2 px-4 mt-4"&gt;Ver Regras&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Tela de Seleção de Dificuldade --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="difficulty-screen"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1 class="text-6xl md:text-7xl font-bold text-[#5d4037] mb-8"&gt;Escolha a Dificuldade&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex flex-col md:flex-row gap-6 justify-center max-w-lg mx-auto"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button id="easy-btn" class="btn bg-[#4caf50] hover:bg-[#388e3c] text-white font-bold py-4 px-8 text-2xl flex-1"&gt;Fácil&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button id="hard-btn" class="btn bg-[#c62828] hover:bg-[#b71c1c] text-white font-bold py-4 px-8 text-2xl flex-1"&gt;Difícil&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button id="back-to-teams-btn" class="btn bg-transparent border-none text-[#6d4c41] hover:text-[#44281d] font-bold py-2 px-4 mt-8"&gt;Voltar&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Tela Principal do Jogo --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="game-screen"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;!-- Botões de Ação Flutuantes --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="fixed top-4 right-4 flex gap-3 z-20"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button id="open-rules-btn" class="btn bg-[#6b5b50] hover:bg-[#5d4037] p-3 rounded-full"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"&gt;&lt;circle cx="12" cy="12" r="10"&gt;&lt;/circle&gt;&lt;path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"&gt;&lt;/path&gt;&lt;line x1="12" y1="17" x2="12.01" y2="17"&gt;&lt;/line&gt;&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button id="open-restart-btn" class="btn bg-[#6b5b50] hover:bg-[#5d4037] p-3 rounded-full"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"&gt;&lt;path d="M2.5 2v6h6M21.5 22v-6h-6"/&gt;&lt;path d="M22 11.5A10 10 0 0 0 3.2 7.2M2 12.5a10 10 0 0 0 18.8 4.2"/&gt;&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Placar das Equipes --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="scoreboard" class="flex flex-wrap justify-center gap-4 mb-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Placar dinâmico aqui --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card p-8 rounded-lg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex justify-between items-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div id="turn-indicator" class="text-[#6d4c41] font-bold text-2xl md:text-3xl mb-4 text-left"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div id="round-counter" class="text-[#795548] font-bold text-xl md:text-2xl mb-4"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;div class="flex justify-center items-center mb-4 p-2 border-2 border-[#c8b7a6] rounded-lg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#6d4c41] mr-2"&gt;&lt;circle cx="12" cy="12" r="10"&gt;&lt;/circle&gt;&lt;polyline points="12 6 12 12 16 14"&gt;&lt;/polyline&gt;&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="text-lg font-bold mr-3"&gt;Tempo:&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div id="timer" class="text-5xl font-bold text-[#6d4c41]"&gt;90&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="question-container" class="mb-6 min-h-[120px]"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h2 id="question-text" class="text-3xl md:text-4xl font-bold"&gt;&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="options-container" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;!-- Opções de resposta aqui --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="action-container" class="flex flex-col md:flex-row gap-4 justify-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button id="surprise-card-btn" class="btn bg-[#795548] hover:bg-[#5d4037] text-white font-bold py-3 px-6 shadow-lg text-lg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block mr-2"&gt;&lt;path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0L12 2.69z"&gt;&lt;/path&gt;&lt;path d="M12 12.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"&gt;&lt;/path&gt;&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>Surpresa</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;div id="feedback-message" class="mt-6 text-2xl font-bold h-8"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Tela Final --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="end-screen"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1 class="text-6xl font-bold text-[#5d4037] mb-6"&gt;FIM DE JOGO!&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="winner-announcement" class="text-2xl text-[#4e342e] mb-2"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="winner-card" class="card bg-[#c8b7a6] border-2 border-[#8d6e63] p-4 my-4 max-w-md mx-auto"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;h2 id="winner-name" class="text-5xl font-bold text-[#5d4037]"&gt;&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="final-scores" class="text-xl mt-6 mb-8"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button id="restart-btn" class="btn bg-[#8d6e63] hover:bg-[#6d4c41] text-white font-bold py-4 px-8 text-2xl"&gt;Jogar Novamente&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Modal para ações especiais --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4" style="display: none; z-index: 50;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;div class="card p-8 rounded-lg max-w-lg w-full text-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 id="modal-title" class="text-2xl font-bold text-[#6d4c41] mb-4"&gt;&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="modal-description" class="mb-6 text-lg text-left text-[#4e342e]"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="modal-options" class="flex flex-col gap-3"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button id="modal-close" class="btn bg-stone-600 hover:bg-stone-700 text-white mt-6 py-2 px-4"&gt;Fechar&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// --- BANCOS DE PERGUNTAS ---</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const questionsEasy = [</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Gênesis (30)</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quem foi o primeiro homem criado por Deus?", options: ["Abel", "Caim", "Adão", "Noé"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual o nome da primeira mulher?", options: ["Sara", "Rebeca", "Eva", "Raquel"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "O que Deus usou para criar Eva?", options: ["Pó da terra", "Uma costela de Adão", "Barro", "Sua palavra"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual animal enganou Eva no Jardim do Éden?", options: ["Leão", "Corvo", "Serpente", "Macaco"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quem eram os dois filhos de Adão e Eva mencionados no início da Bíblia?", options: ["Jacó e Esaú", "Moisés e Arão", "Caim e Abel", "Pedro e André"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quem construiu uma arca para sobreviver ao dilúvio?", options: ["Abraão", "Moisés", "Noé", "Jacó"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quantos filhos Noé tinha?", options: ["Dois", "Três", "Quatro", "Cinco"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual o sinal que Deus colocou no céu como promessa de que nunca mais destruiria a terra com água?", options: ["Uma estrela", "Uma nuvem", "O arco-íris", "O sol"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual o nome da torre que os homens construíram para tentar alcançar o céu?", options: ["Torre de Siloé", "Torre de Davi", "Torre de Babel", "Torre de Jerusalém"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quem é considerado o 'Pai da Fé'?", options: ["Isaque", "Jacó", "José", "Abraão"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual o nome da esposa de Abraão?", options: ["Rebeca", "Lia", "Raquel", "Sara"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual o nome do filho que Deus pediu para Abraão sacrificar?", options: ["Ismael", "Isaque", "Jacó", "Esaú"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual sobrinho de Abraão foi salvo da destruição de Sodoma e Gomorra?", options: ["Naor", "Harã", "Ló", "Eliézer"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "A esposa de Ló se transformou em uma estátua de quê ao olhar para trás?", options: ["Pedra", "Areia", "Ouro", "Sal"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quem teve seu nome mudado para Israel após lutar com um anjo?", options: ["Abraão", "Isaque", "Jacó", "José"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quantos filhos Jacó teve?", options: ["7", "10", "12", "14"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual filho de Jacó foi vendido como escravo por seus irmãos?", options: ["Rúben", "Judá", "José", "Benjamim"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "O que o pai de José lhe deu que causou ciúmes em seus irmãos?", options: ["Um cajado especial", "Uma túnica colorida", "Mais ovelhas", "Uma porção maior de comida"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Para qual país José foi levado como escravo?", options: ["Canaã", "Egito", "Babilônia", "Assíria"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Como José se tornou governador do Egito?", options: ["Ganhando uma guerra", "Interpretando os sonhos do Faraó", "Sendo eleito pelo povo", "Casando com a filha do Faraó"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quem era o irmão mais novo de José?", options: ["Judá", "Simeão", "Rúben", "Benjamim"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual era o nome da esposa de Isaque?", options: ["Sara", "Rebeca", "Lia", "Raquel"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quem eram os filhos gêmeos de Isaque?", options: ["Caim e Abel", "Moisés e Arão", "Jacó e Esaú", "José e Benjamim"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual era o nome da mãe de Samuel?", options: ["Ester", "Rute", "Ana", "Débora"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Deus criou o mundo em quantos dias?", options: ["3 dias", "6 dias", "7 dias", "10 dias"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "O que aconteceu no sétimo dia da criação?", options: ["Deus criou o homem", "Deus descansou", "Deus criou os animais", "Deus criou o sol"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual foi o primeiro pecado da humanidade?", options: ["Mentir", "Roubar", "Desobedecer a Deus", "Matar"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual foi a consequência do dilúvio?", options: ["A terra ficou seca", "A terra ficou coberta de água", "Os animais desapareceram", "As plantas morreram"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual era a promessa de Deus a Abraão?", options: ["Riqueza e poder", "Uma longa vida", "Uma descendência numerosa", "Um palácio"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual o nome do filho de José nascido no Egito?", options: ["Manassés", "Efraim", "Gérson", "Ambos A e B"], answer: 3, points: 100 },</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Êxodo e Deserto (30)</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quem foi encontrado num cesto no rio Nilo e criado pela filha do Faraó?", options: ["Arão", "Josué", "Calebe", "Moisés"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Como Deus falou com Moisés pela primeira vez?", options: ["Em um sonho", "Através de uma sarça ardente", "Por meio de um anjo", "Em uma nuvem"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual era o nome do irmão de Moisés?", options: ["Arão", "Hur", "Miriã", "Josué"], answer: 0, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quantas pragas Deus enviou sobre o Egito?", options: ["5", "7", "10", "12"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual foi a primeira praga do Egito?", options: ["Rãs", "Piolhos", "Trevas", "Água em sangue"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual foi a última praga do Egito?", options: ["Morte dos primogênitos", "Gafanhotos", "Ulcerações", "Chuva de pedras"], answer: 0, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual mar foi dividido para que os israelitas pudessem escapar do Egito?", options: ["Mar Morto", "Mar Mediterrâneo", "Mar Vermelho", "Mar da Galileia"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "O que os israelitas comeram no deserto, que caía do céu?", options: ["Pão e peixe", "Maná", "Frutas silvestres", "Codorna"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Em qual monte Moisés recebeu os Dez Mandamentos?", options: ["Monte Carmelo", "Monte das Oliveiras", "Monte Sinai", "Monte Nebo"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quantos eram os Dez Mandamentos?", options: ["Cinco", "Dez", "Doze", "Sete"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual foi o primeiro dos Dez Mandamentos?", options: ["Não matarás", "Não terás outros deuses além de mim", "Honra teu pai e tua mãe", "Não cobiçarás"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Que ídolo os israelitas construíram enquanto Moisés estava no monte?", options: ["Um peixe de prata", "Uma serpente de bronze", "Um bezerro de ouro", "Um poste de madeira"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "O que era guardado dentro da Arca da Aliança?", options: ["As vestes de Arão", "O cajado de Moisés", "As tábuas dos Dez Mandamentos", "Um rolo da Lei"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "De onde Moisés tirou água para o povo no deserto?", options: ["De um poço", "De uma nuvem", "De uma rocha", "De um rio"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Por quantos anos os israelitas vagaram pelo deserto?", options: ["10 anos", "20 anos", "40 anos", "70 anos"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "O que era o Tabernáculo construído no deserto?", options: ["A casa de Moisés", "Um palácio para o rei", "Uma tenda para adoração a Deus", "Um mercado"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quem sucedeu Moisés como líder de Israel?", options: ["Arão", "Josué", "Calebe", "Gideão"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quantos espiões foram enviados para explorar a terra de Canaã?", options: ["2", "7", "10", "12"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quais foram os dois espiões que trouxeram um relatório positivo?", options: ["Josué e Calebe", "Dã e Naftali", "Simeão e Levi", "Gade e Aser"], answer: 0, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "O que aconteceu com a serpente de bronze que Moisés fez no deserto?", options: ["Foi destruída", "Curava quem olhava para ela", "Virou pó", "Foi levada para o Egito"], answer: 1, points: 100 },</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Josué, Juízes, Rute, Samuel (30)</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quem liderou os israelitas na conquista de Jericó?", options: ["Moisés", "Arão", "Josué", "Calebe"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Como as muralhas de Jericó caíram?", options: ["Com um terremoto", "Com catapultas", "Após os israelitas marcharem e tocarem trombetas", "Com uma grande enchente"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual mulher escondeu os espiões israelitas em Jericó?", options: ["Débora", "Jael", "Raabe", "Rute"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual juiz de Israel era conhecido por sua força sobre-humana?", options: ["Gideão", "Jefté", "Débora", "Sansão"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "De onde vinha a força de Sansão?", options: ["De uma pulseira mágica", "De seu cabelo comprido", "De uma poção", "De sua armadura"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quem cortou o cabelo de Sansão, fazendo-o perder sua força?", options: ["Sua mãe", "Dalila", "Uma serva filisteia", "Ele mesmo"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual juiz derrotou um exército enorme com apenas 300 homens?", options: ["Sansão", "Otniel", "Gideão", "Eúde"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual mulher foi a única juíza de Israel?", options: ["Ester", "Rute", "Débora", "Miriã"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quem era o parente de Noemi que se casou com Rute?", options: ["Elimeleque", "Malom", "Quiliom", "Boaz"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual era a nacionalidade de Rute?", options: ["Israelita", "Egípcia", "Moabita", "Filisteia"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual profeta ungiu os dois primeiros reis de Israel?", options: ["Isaías", "Jeremias", "Samuel", "Natã"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quem foi o primeiro rei de Israel?", options: ["Davi", "Salomão", "Saul", "Roboão"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual gigante filisteu foi derrotado por Davi?", options: ["Laquis", "Sife", "Golias", "Agague"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Que arma Davi usou para derrotar Golias?", options: ["Uma espada", "Um arco e flecha", "Uma funda e uma pedra", "Uma lança"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Que instrumento Davi tocava para acalmar o rei Saul?", options: ["Flauta", "Harpa", "Trombeta", "Tambor"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual era o nome do melhor amigo de Davi, que era filho de Saul?", options: ["Abner", "Joabe", "Jônatas", "Absalão"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Davi era o filho mais novo ou mais velho de Jessé?", options: ["O mais velho", "O segundo mais velho", "O mais novo", "Filho único"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual o nome da cidade que Davi conquistou e tornou sua capital?", options: ["Hebrom", "Jericó", "Samaria", "Jerusalém"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual era a profissão de Davi antes de ser rei?", options: ["Pescador", "Carpinteiro", "Pastor de ovelhas", "Soldado"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quem foi o profeta que serviu no templo sob o sacerdote Eli?", options: ["Isaías", "Jeremias", "Samuel", "Ezequiel"], answer: 2, points: 100 },</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Reis, Profetas (30)</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual rei sucedeu Davi no trono de Israel?", options: ["Absalão", "Adonias", "Salomão", "Roboão"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual rei construiu o primeiro Templo em Jerusalém?", options: ["Davi", "Salomão", "Ezequias", "Josias"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual rei era conhecido por sua grande sabedoria?", options: ["Saul", "Davi", "Salomão", "Josafá"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Após a morte de Salomão, o reino de Israel se dividiu em dois. Quais eram seus nomes?", options: ["Israel e Canaã", "Judá e Samaria", "Israel e Judá", "Galileia e Judeia"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual profeta foi alimentado por corvos?", options: ["Eliseu", "Isaías", "Elias", "Jeremias"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quem foi o profeta que foi engolido por um grande peixe?", options: ["Jonas", "Amós", "Oseias", "Miqueias"], answer: 0, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Para qual cidade Deus enviou Jonas para pregar?", options: ["Babilônia", "Damasco", "Társis", "Nínive"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual profeta desafiou os profetas de Baal no Monte Carmelo?", options: ["Eliseu", "Elias", "Isaías", "Miqueias"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual profeta foi lançado na cova dos leões e sobreviveu?", options: ["Isaías", "Jeremias", "Ezequiel", "Daniel"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quais eram os três amigos de Daniel que foram jogados na fornalha ardente?", options: ["Elifaz, Bildade e Zofar", "Sadraque, Mesaque e Abednego", "Hananias, Misael e Azarias", "Adoni-Zedeque, Hoão e Pirã"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual rainha judia salvou seu povo do extermínio planejado por Hamã?", options: ["Vasti", "Jezabel", "Atalia", "Ester"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual o nome do primo de Ester, que a criou?", options: ["Hamã", "Assuero", "Mardoqueu", "Hegai"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quem reconstruiu os muros de Jerusalém após o exílio babilônico?", options: ["Esdras", "Zorobabel", "Neemias", "Ageu"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual profeta previu o nascimento de Jesus em Belém?", options: ["Isaías", "Miqueias", "Zacarias", "Malaquias"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual o livro de poesia que fala sobre o sofrimento e a fidelidade de um homem justo?", options: ["Salmos", "Provérbios", "Eclesiastes", "Jó"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual o livro mais longo da Bíblia?", options: ["Gênesis", "Isaías", "Jeremias", "Salmos"], answer: 3, points: 100 },</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Novo Testamento (40)</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Em qual cidade Jesus nasceu?", options: ["Nazaré", "Jerusalém", "Belém", "Cafarnaum"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual era o nome da mãe de Jesus?", options: ["Isabel", "Marta", "Maria Madalena", "Maria"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quem era o noivo de Maria, mãe de Jesus?", options: ["Zacarias", "Simeão", "José", "João"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quem visitou o menino Jesus trazendo ouro, incenso e mirra?", options: ["Pastores", "Sacerdotes", "Reis Magos", "Anjos"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quem batizou Jesus no rio Jordão?", options: ["Pedro", "João Batista", "Tiago", "André"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quantos discípulos Jesus escolheu para seu círculo mais próximo?", options: ["7", "10", "12", "70"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual era a profissão de Pedro antes de seguir Jesus?", options: ["Carpinteiro", "Cobrador de impostos", "Pescador", "Pastor"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual discípulo traiu Jesus?", options: ["Pedro", "Tomé", "Judas Iscariotes", "João"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Com quantos pães e peixes Jesus alimentou a multidão de cinco mil homens?", options: ["Sete pães e alguns peixes", "Cinco pães e dois peixes", "Doze pães e três peixes", "Dois pães e cinco peixes"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quem andou sobre as águas com Jesus, mas depois duvidou e afundou?", options: ["João", "Tiago", "André", "Pedro"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual o nome do homem que Jesus ressuscitou dos mortos?", options: ["Jairo", "Lázaro", "Tabita", "Eutico"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual o nome do cobrador de impostos que subiu em uma árvore para ver Jesus?", options: ["Mateus", "Bartimeu", "Zaqueu", "Nicodemos"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual é o primeiro livro do Novo Testamento?", options: ["Gênesis", "Atos", "Mateus", "Apocalipse"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual discípulo duvidou da ressurreição de Jesus até que pudesse tocar em Suas feridas?", options: ["Filipe", "Bartolomeu", "Tomé", "Judas Tadeu"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual o mandamento mais importante, segundo Jesus?", options: ["Não matarás", "Amar a Deus e ao próximo", "Guardar o sábado", "Não roubarás"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual o nome do lugar onde Jesus foi crucificado?", options: ["Getsêmani", "Monte das Oliveiras", "Gólgota (Calvário)", "Sinédrio"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quantos dias Jesus ficou no deserto sendo tentado?", options: ["3 dias", "12 dias", "30 dias", "40 dias"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quem apareceu no monte da Transfiguração com Jesus?", options: ["Abraão e Isaque", "Davi e Salomão", "Moisés e Elias", "João Batista e Isaías"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Na parábola do Bom Samaritano, quem ajudou o homem ferido?", options: ["Um sacerdote", "Um levita", "Um samaritano", "Um fariseu"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual é a oração que Jesus ensinou aos seus discípulos?", options: ["O Credo", "O Salmo 23", "O Pai Nosso", "A Ave Maria"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quantos leprosos Jesus curou, dos quais apenas um voltou para agradecer?", options: ["Um", "Cinco", "Dez", "Doze"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Onde Jesus realizou seu primeiro milagre?", options: ["Jerusalém", "Betânia", "Cafarnaum", "Caná da Galileia"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual discípulo negou Jesus três vezes antes do galo cantar?", options: ["Judas", "João", "Pedro", "Tiago"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual o nome do apóstolo Paulo antes de sua conversão?", options: ["Saulo", "Silas", "Barnabé", "Timóteo"], answer: 0, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Em que estrada Paulo teve sua conversão?", options: ["Estrada de Jericó", "Estrada de Emaús", "Estrada de Damasco", "Estrada de Roma"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "O que aconteceu no dia de Pentecostes?", options: ["Jesus ressuscitou", "O Espírito Santo desceu sobre os discípulos", "Paulo se converteu", "O templo foi destruído"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual apóstolo foi o primeiro a pregar aos gentios?", options: ["Paulo", "Tiago", "Pedro", "João"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quem acompanhou Paulo em sua primeira viagem missionária?", options: ["Silas", "Timóteo", "Barnabé", "Lucas"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual casal ajudou Apolo a entender o caminho de Deus mais perfeitamente?", options: ["Ananias e Safira", "Filemom e Áfia", "Priscila e Áquila", "Júnia e Andrônico"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual apóstolo escreveu a maior parte dos livros do Novo Testamento?", options: ["Pedro", "João", "Paulo", "Mateus"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Em qual cidade os seguidores de Jesus foram chamados de 'cristãos' pela primeira vez?", options: ["Jerusalém", "Samaria", "Éfeso", "Antioquia"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual o dom mais excelente, segundo o apóstolo Paulo?", options: ["Fé", "Esperança", "Amor", "Profecia"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual o tema principal do livro de Hebreus?", options: ["A criação do mundo", "A superioridade de Cristo", "As viagens de Paulo", "O fim dos tempos"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quem é o autor do livro de Apocalipse?", options: ["Pedro", "Paulo", "João", "Mateus"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Em que ilha o apóstolo João estava quando recebeu a revelação do Apocalipse?", options: ["Creta", "Chipre", "Malta", "Patmos"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual o último livro da Bíblia?", options: ["Judas", "Hebreus", "Apocalipse", "Malaquias"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">        </span>];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const questionsHard = [</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual juiz de Israel fez um voto precipitado que resultou no sacrifício de sua filha?", options: ["Gideão", "Sansão", "Jefté", "Eúde"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual o nome do artesão chefe que Deus capacitou para construir o Tabernáculo?", options: ["Uri", "Aoliabe", "Hur", "Bezalel"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual rei de Judá teve um sinal de Deus fazendo a sombra do relógio de sol retroceder dez graus?", options: ["Josafá", "Ezequias", "Josias", "Acaz"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual casal mentiu sobre o valor da venda de uma propriedade e morreu por isso no livro de Atos?", options: ["Áquila e Priscila", "Filemom e Áfia", "Ananias e Safira", "Andrônico e Júnia"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual livro do profeta menor é uma profecia inteiramente contra a nação de Edom?", options: ["Naum", "Obadias", "Sofonias", "Ageu"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual o nome do pai de João Batista?", options: ["Simeão", "José", "Isaias", "Zacarias"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual foi o primeiro mártir cristão registrado no livro de Atos?", options: ["Tiago", "Estêvão", "Pedro", "Barnabé"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual rei da Babilônia sonhou com uma grande estátua feita de diferentes metais?", options: ["Belsazar", "Dario", "Ciro", "Nabucodonosor"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual juiz canhoto de Israel libertou o povo matando o rei Eglom de Moabe?", options: ["Otniel", "Sangrar", "Débora", "Eúde"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual profetisa reconheceu o menino Jesus como o Messias quando ele foi apresentado no Templo?", options: ["Débora", "Miriã", "Hulda", "Ana"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Em qual cidade Paulo pregou sobre o 'Deus Desconhecido' no Areópago?", options: ["Corinto", "Roma", "Atenas", "Éfeso"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Em qual rio Naamã, o comandante sírio, teve que mergulhar sete vezes para ser curado da lepra?", options: ["Eufrates", "Jordão", "Nilo", "Tigre"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual livro do Novo Testamento é uma carta pessoal de Paulo a um dono de escravos?", options: ["Tito", "Filemom", "2 Timóteo", "3 João"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual o nome do ourives em Éfeso que iniciou um motim contra Paulo?", options: ["Alexandre", "Demétrio", "Erasto", "Gaio"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Na igreja de qual cidade, mencionada em Apocalipse, Jesus disse que estava 'à porta e bato'?", options: ["Esmirna", "Tiatira", "Filadélfia", "Laodiceia"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Que parente de Barnabé acompanhou ele e Paulo em parte da primeira viagem missionária?", options: ["Silas", "Timóteo", "João Marcos", "Tito"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual era o nome da avó de Timóteo, elogiada por sua fé sincera?", options: ["Eunice", "Priscila", "Febe", "Loide"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual profeta foi chamado por Deus enquanto ainda era um menino que servia no templo com o sacerdote Eli?", options: ["Isaías", "Samuel", "Jeremias", "Daniel"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual era o nome da montanha onde Arão, irmão de Moisés, morreu?", options: ["Monte Sinai", "Monte Nebo", "Monte Hor", "Monte Carmelo"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "No livro de Juízes, qual mulher matou o general Sísera com uma estaca de tenda?", options: ["Débora", "Rute", "Ester", "Jael"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual o nome do servo do sumo sacerdote que teve a orelha cortada por Pedro no Getsêmani?", options: ["Barrabás", "Simão Cireneu", "Malco", "José de Arimateia"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Na visão de Ezequiel, quantos rostos cada um dos quatro querubins tinha?", options: ["Um", "Dois", "Três", "Quatro"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual dos Doze Apóstolos também era conhecido como Levi, o cobrador de impostos?", options: ["André", "Tiago, filho de Alfeu", "Mateus", "Tadeu"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Na carta aos Gálatas, a quem o apóstolo Paulo diz que repreendeu 'face a face' em Antioquia?", options: ["Barnabé", "Tiago", "João", "Pedro (Cefas)"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual foi o profeta que Deus enviou para repreender o rei Davi após seu pecado com Bate-Seba?", options: ["Elias", "Natã", "Gad", "Isaías"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "De qual tribo de Israel era o apóstolo Paulo?", options: ["Judá", "Levi", "Benjamim", "Dã"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual homem de Alexandria, poderoso nas Escrituras, foi instruído mais precisamente no caminho de Deus por Priscila e Áquila?", options: ["Estêvão", "Filipe", "Apolo", "Barnabé"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quem foi o primeiro polígamo mencionado na Bíblia, descendente de Caim?", options: ["Enoque", "Jabal", "Lameque", "Tubalcaim"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual o nome do rei de Salém que abençoou Abraão e a quem Abraão deu o dízimo?", options: ["Abimeleque", "Melquisedeque", "Adoni-Zedeque", "Bera"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual o nome do profeta que ungiu tanto Saul quanto Davi como reis de Israel?", options: ["Elias", "Natã", "Samuel", "Aías"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual profeta foi casado com uma prostituta chamada Gômer como um sinal para Israel?", options: ["Amós", "Oseias", "Joel", "Jonas"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual era o nome do escravo fugitivo em cujo favor Paulo escreveu a epístola a Filemom?", options: ["Tíquico", "Onésimo", "Arquipo", "Epafras"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quais duas tribos de Israel receberam sua herança a leste do rio Jordão?", options: ["Simeão e Levi", "Efraim e Manassés", "Rúben e Gade", "Zebulom e Naftali"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual rainha de Judá, filha de Acabe e Jezabel, tentou exterminar a linhagem real de Davi?", options: ["Maaca", "Jezabel", "Atalia", "Zedeca"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Como Jacó chamou o lugar onde lutou com Deus face a face?", options: ["Betel", "Maanaim", "Peniel", "Siquém"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quem foi o primeiro rei do Reino do Norte (Israel) após a divisão do reino?", options: ["Roboão", "Jeroboão", "Asa", "Nadabe"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual livro de um profeta menor consiste principalmente em um diálogo entre o profeta e Deus sobre a justiça divina?", options: ["Sofonias", "Malaquias", "Habacuque", "Ageu"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual rei de Israel comprou um monte e construiu a cidade de Samaria, fazendo dela sua capital?", options: ["Zinri", "Onri", "Elá", "Acabe"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual filho de Saul era coxo de ambos os pés e foi tratado com bondade por Davi?", options: ["Is-Bosete", "Jônatas", "Abinadabe", "Mefibosete"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "O que Acã roubou de Jericó, resultando na derrota de Israel em Ai?", options: ["Gado e ovelhas", "Ídolos de ouro", "Uma capa babilônica, prata e ouro", "Armas e armaduras"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual epístola do Novo Testamento foi endereçada à 'senhora eleita e aos seus filhos'?", options: ["Filemom", "3 João", "2 João", "Judas"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quais eram os nomes dos dois pilares de bronze que ficavam na entrada do Templo de Salomão?", options: ["Siloé e Getsêmani", "Jaquim e Boaz", "Urim e Tumim", "Gerizim e Ebal"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quem foi a primeira pessoa convertida na Europa, uma vendedora de púrpura de Tiatira?", options: ["Dorcas", "Febe", "Priscila", "Lídia"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Na epístola de Judas, qual arcanjo disputou com o diabo pelo corpo de Moisés?", options: ["Gabriel", "Rafael", "Uriel", "Miguel"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual rei de Judá foi acometido de lepra por queimar incenso ilegalmente no templo?", options: ["Joatão", "Acaz", "Manassés", "Uzias"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Em qual livro do Antigo Testamento encontramos a história de Balaão e sua jumenta falante?", options: ["Êxodo", "Deuteronômio", "Números", "Levítico"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual apóstolo era conhecido como 'o Zelote'?", options: ["Bartolomeu", "Tomé", "Simão", "Tadeu"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual discípulo foi o primeiro dos doze a ser martirizado, conforme registrado em Atos 12?", options: ["André", "Filipe", "Tiago, filho de Zebedeu", "Mateus"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Na parábola contada por Jesus, para onde foi Lázaro após sua morte?", options: ["Para o Hades", "Para o Céu", "Para o Seio de Abraão", "Para o Paraíso"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual profeta teve uma visão de um vale de ossos secos que reviveram?", options: ["Jeremias", "Daniel", "Oseias", "Ezequiel"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual rei de Judá começou a reinar com oito anos e promoveu uma grande reforma religiosa?", options: ["Joás", "Amon", "Josias", "Ezequias"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual livro do Novo Testamento foi escrito pelo meio-irmão de Jesus?", options: ["Hebreus", "1 Pedro", "Judas", "Tiago"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual era o nome do homem que pediu o corpo de Jesus para o sepultamento?", options: ["Nicodemos", "José de Arimateia", "Simão Cireneu", "Zaqueu"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual profeta foi ordenado por Deus a andar nu e descalço por três anos como sinal contra o Egito e a Etiópia?", options: ["Jeremias", "Ezequiel", "Isaías", "Oseias"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual era o nome do campo comprado com o dinheiro da traição de Judas, conhecido como 'Campo de Sangue'?", options: ["Gólgota", "Getsêmani", "Aceldama", "Hinom"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual o nome do sogro de Caifás, o sumo sacerdote?", options: ["Zadoque", "Abiatar", "Anás", "Eli"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Quem era o feiticeiro em Chipre que foi cegado por Paulo por se opor ao evangelho?", options: ["Simão, o Mago", "Elimas", "Apolônio", "Jambres"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Que objeto Gideão usou para confirmar o chamado de Deus, pedindo sinais de orvalho?", options: ["Um cajado", "Um novelo de lã", "Uma pedra", "Um jarro de barro"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Que rei de Israel era conhecido por sua condução 'furiosa' de bigas?", options: ["Acabe", "Jeú", "Onri", "Jorão"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual era o nome babilônico dado a Daniel na corte do rei?", options: ["Sadraque", "Abednego", "Beltessazar", "Aspenaz"], answer: 2, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual é a epístola mais longa escrita por Paulo?", options: ["Gálatas", "Efésios", "1 Coríntios", "Romanos"], answer: 3, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ question: "Qual o nome da rainha que foi deposta por desobedecer ao rei Assuero, abrindo caminho para Ester?", options: ["Jezabel", "Vasti", "Atalia", "Maaca"], answer: 1, points: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// ... (restante das 150 perguntas difíceis)</p>
+<p class="p1"><span class="Apple-converted-space">        </span>];</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// --- VARIÁVEIS DO JOGO ---</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let teams = [];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let activeTeams = [];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let currentTeamIndex = 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let currentQuestionIndex = 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let currentRound = 1;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let shuffledQuestions = [];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let isSuddenDeath = false;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let correctSound, wrongSound, surpriseSound, clickSound;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let timerInterval;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// --- ELEMENTOS DA UI ---</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const rulesScreen = document.getElementById('rules-screen');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const teamsScreen = document.getElementById('teams-screen');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const difficultyScreen = document.getElementById('difficulty-screen');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const gameScreen = document.getElementById('game-screen');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const endScreen = document.getElementById('end-screen');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const teamNameInput = document.getElementById('team-name-input');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const addTeamBtn = document.getElementById('add-team-btn');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const teamsList = document.getElementById('teams-list');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const continueToDifficultyBtn = document.getElementById('continue-to-difficulty-btn');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const easyBtn = document.getElementById('easy-btn');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const hardBtn = document.getElementById('hard-btn');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const backToTeamsBtn = document.getElementById('back-to-teams-btn');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const scoreboard = document.getElementById('scoreboard');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const turnIndicator = document.getElementById('turn-indicator');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const questionText = document.getElementById('question-text');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const optionsContainer = document.getElementById('options-container');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const surpriseCardBtn = document.getElementById('surprise-card-btn');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const feedbackMessage = document.getElementById('feedback-message');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const winnerAnnouncement = document.getElementById('winner-announcement');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const winnerName = document.getElementById('winner-name');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const finalScores = document.getElementById('final-scores');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const restartBtn = document.getElementById('restart-btn');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const roundCounter = document.getElementById('round-counter');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const timerElement = document.getElementById('timer');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const openRulesBtn = document.getElementById('open-rules-btn');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const openRestartBtn = document.getElementById('open-restart-btn');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const goToTeamsBtn = document.getElementById('go-to-teams-btn');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const backToRulesBtn = document.getElementById('back-to-rules-btn');</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const modal = document.getElementById('modal');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const modalTitle = document.getElementById('modal-title');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const modalDescription = document.getElementById('modal-description');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const modalOptions = document.getElementById('modal-options');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const modalClose = document.getElementById('modal-close');</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// --- CONFIGURAÇÃO DE SOM ---</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function setupSounds() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>correctSound = new Tone.Synth({ oscillator: { type: 'sine' }, envelope: { attack: 0.005, decay: 0.1, sustain: 0.3, release: 1 } }).toDestination();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>wrongSound = new Tone.Synth({ oscillator: { type: 'square' }, envelope: { attack: 0.01, decay: 0.4, sustain: 0, release: 0.4 } }).toDestination();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const filter = new Tone.AutoFilter("4n").toDestination().start();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>surpriseSound = new Tone.NoiseSynth({ noise: { type: 'brown' }, envelope: { attack: 0.01, decay: 0.2, sustain: 0 } }).connect(filter);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>clickSound = new Tone.MembraneSynth({ pitchDecay: 0.01, octaves: 2, envelope: { attack: 0.001, decay: 0.2, sustain: 0 } }).toDestination();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// --- FUNÇÕES DE NAVEGAÇÃO ENTRE TELAS ---</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function showScreen(screenId) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>['rules-screen', 'teams-screen', 'difficulty-screen', 'game-screen', 'end-screen'].forEach(id =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById(id).style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById(screenId).style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// --- LÓGICA DO JOGO ---</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function addTeam() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const teamName = teamNameInput.value.trim();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (teamName &amp;&amp; teams.length &lt; 5) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>teams.push({ name: teamName, score: 0, hasUsedSurprise: false });</p>
+<p class="p1"><span class="Apple-converted-space">                </span>teamNameInput.value = '';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>updateTeamsList();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (teams.length &gt;= 2) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>continueToDifficultyBtn.disabled = false;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else if (teams.length &gt;= 5) {</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>showFeedback("Máximo de 5 equipes atingido!", 'red', 2000);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function updateTeamsList() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>teamsList.innerHTML = teams.map((team, index) =&gt; `</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex items-center justify-between p-2 bg-stone-700 rounded-md mb-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="text-lg text-white"&gt;${team.name}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button onclick="deleteTeam(${index})" class="btn p-1 bg-red-700 hover:bg-red-800"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"&gt;&lt;polyline points="3 6 5 6 21 6"&gt;&lt;/polyline&gt;&lt;path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"&gt;&lt;/path&gt;&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`).join('');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function deleteTeam(index) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>teams.splice(index, 1);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>updateTeamsList();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (teams.length &lt; 2) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>continueToDifficultyBtn.disabled = true;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function startGame(difficulty) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (teams.length &lt; 2) return;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (difficulty === 'easy') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>shuffledQuestions = [...questionsEasy].sort(() =&gt; Math.random() - 0.5);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>shuffledQuestions = [...questionsHard].sort(() =&gt; Math.random() - 0.5);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>isSuddenDeath = false;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>activeTeams = [...teams];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>activeTeams.forEach(t =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>t.score = 0;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>t.hasUsedSurprise = false;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showScreen('game-screen');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>currentQuestionIndex = 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>currentTeamIndex = 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>currentRound = 1;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>updateScoreboard();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>displayQuestion();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function stopTimer() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>clearInterval(timerInterval);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>timerElement.classList.remove('text-red-700');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function timeUp() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>stopTimer();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>selectAnswer(-1, true);<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function startTimer() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>stopTimer();<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>let timeLeft = 90;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>timerElement.textContent = timeLeft;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>timerElement.classList.remove('text-red-700');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>timerInterval = setInterval(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>timeLeft--;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>timerElement.textContent = timeLeft;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (timeLeft &lt;= 10) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>timerElement.classList.add('text-red-700');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (timeLeft &lt;= 0) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>timeUp();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}, 1000);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function displayQuestion() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const gameLimit = 10;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!isSuddenDeath &amp;&amp; currentRound &gt; gameLimit) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>checkForTiebreaker();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (currentQuestionIndex &gt;= shuffledQuestions.length) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>checkForTiebreaker();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const currentTeam = activeTeams[currentTeamIndex];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>updateScoreboard();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>optionsContainer.innerHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>surpriseCardBtn.disabled = currentTeam.hasUsedSurprise;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!isSuddenDeath &amp;&amp; currentRound === gameLimit &amp;&amp; !currentTeam.hasUsedSurprise) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>drawSurpriseCard(true);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const q = shuffledQuestions[currentQuestionIndex];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>turnIndicator.textContent = `Vez da equipe: ${currentTeam.name}`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>roundCounter.textContent = isSuddenDeath ? "MORTE SÚBITA" : `Rodada ${currentRound} / ${gameLimit}`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>questionText.textContent = q.question;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>q.options.forEach((option, index) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const button = document.createElement('button');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>button.textContent = option;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>button.classList.add('btn', 'btn-option', 'w-full', 'p-4', 'text-left', 'bg-[#8d6e63]', 'hover:bg-[#6d4c41]', 'text-white', 'text-lg');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>button.onclick = () =&gt; selectAnswer(index);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>optionsContainer.appendChild(button);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>startTimer();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function selectAnswer(selectedIndex, isTimeUp = false) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>stopTimer();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const question = shuffledQuestions[currentQuestionIndex];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const allOptionButtons = optionsContainer.querySelectorAll('button');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>allOptionButtons.forEach(btn =&gt; btn.disabled = true);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>surpriseCardBtn.disabled = true;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const currentTeam = activeTeams[currentTeamIndex];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (isTimeUp) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>showFeedback("Tempo esgotado!", 'red');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>wrongSound.triggerAttackRelease("C2", "0.4s");</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (isSuddenDeath) currentTeam.eliminatedInSuddenDeath = true;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else if (selectedIndex &gt;= 0) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (selectedIndex === question.answer) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>correctSound.triggerAttackRelease("C4", "0.5s");</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>currentTeam.score += question.points;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>showFeedback(`Correto! +${question.points} pontos!`, 'green');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>allOptionButtons[selectedIndex].classList.add('correct');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const originalIndex = teams.findIndex(t =&gt; t.name === currentTeam.name);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>document.getElementById(`score-${originalIndex}`).classList.add('score-update');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>wrongSound.triggerAttackRelease("C2", "0.4s");</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (isSuddenDeath) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>currentTeam.eliminatedInSuddenDeath = true;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>showFeedback(`Errado!`, 'red');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>allOptionButtons[selectedIndex].classList.add('incorrect');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>allOptionButtons[question.answer].classList.add('correct');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>updateScoreboard();</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>setTimeout(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>allOptionButtons.forEach(btn =&gt; btn.classList.remove('correct', 'incorrect'));</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const originalIndex = teams.findIndex(t =&gt; t.name === currentTeam.name);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById(`score-${originalIndex}`)?.classList.remove('score-update');</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (isSuddenDeath &amp;&amp; currentTeamIndex === activeTeams.length - 1) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const remainingInSuddenDeath = activeTeams.filter(team =&gt; !team.eliminatedInSuddenDeath);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (remainingInSuddenDeath.length &lt;= 1) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>activeTeams = remainingInSuddenDeath;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>showFinalScreen();</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>activeTeams = remainingInSuddenDeath;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>currentTeamIndex = -1;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>currentQuestionIndex++;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>nextTurn();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>displayQuestion();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}, 2500);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function nextTurn() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (activeTeams.length === 0) return;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const isRoundOver = currentTeamIndex === activeTeams.length - 1;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (isRoundOver &amp;&amp; !isSuddenDeath) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>currentRound++;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>currentTeamIndex = (currentTeamIndex + 1) % activeTeams.length;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function updateScoreboard() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>scoreboard.innerHTML = teams.map((team, index) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const isActive = activeTeams.length &gt; 0 &amp;&amp; activeTeams[currentTeamIndex] &amp;&amp; activeTeams[currentTeamIndex].name === team.name;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return `</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="team-card-${index}" class="card p-4 rounded-lg flex-1 min-w-[120px] ${isActive &amp;&amp; !isSuddenDeath ? 'active-team-card' : ''}"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 class="text-xl font-bold truncate text-[#6d4c41]"&gt;${team.name}&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p id="score-${index}" class="text-4xl font-bold text-[#8d6e63]"&gt;${team.score}&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`}).join('');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function showFeedback(message, type, duration = 2500) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>feedbackMessage.textContent = message;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>feedbackMessage.className = `mt-6 text-2xl font-bold h-8`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (type === 'green') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>feedbackMessage.classList.add('text-green-600');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else if (type === 'red') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>feedbackMessage.classList.add('text-red-700');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>feedbackMessage.classList.add('text-[#6d4c41]');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>setTimeout(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>feedbackMessage.textContent = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}, duration);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function showFinalScreen() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showScreen('end-screen');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const sortedAllTeams = [...teams].sort((a, b) =&gt; b.score - a.score);</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (activeTeams.length === 1) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>winnerAnnouncement.textContent = `A equipe vencedora é...`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>winnerName.textContent = activeTeams[0].name;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else if (activeTeams.length === 0) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>winnerAnnouncement.textContent = "Empate! Ninguém venceu a Morte Súbita.";</p>
+<p class="p1"><span class="Apple-converted-space">                </span>winnerName.textContent = "";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>const winner = sortedAllTeams[0];</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>winnerAnnouncement.textContent = `A equipe vencedora é...`;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>winnerName.textContent = winner.name;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>finalScores.innerHTML = sortedAllTeams.map(team =&gt;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>`&lt;p class="text-xl"&gt;${team.name}: ${team.score} pontos&lt;/p&gt;`</p>
+<p class="p1"><span class="Apple-converted-space">            </span>).join('');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function checkForTiebreaker() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const sortedTeams = [...activeTeams].sort((a, b) =&gt; b.score - a.score);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (sortedTeams.length &lt;= 1) {</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>activeTeams = sortedTeams;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>showFinalScreen();</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const topScore = sortedTeams[0].score;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const tiedTeams = sortedTeams.filter(team =&gt; team.score === topScore);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (tiedTeams.length &gt; 1) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>isSuddenDeath = true;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>activeTeams = tiedTeams;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>activeTeams.forEach(t =&gt; t.eliminatedInSuddenDeath = false);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>currentTeamIndex = 0;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>showFeedback("EMPATE! Iniciando Morte Súbita!", 'yellow', 4000);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>setTimeout(displayQuestion, 4000);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>activeTeams = [sortedTeams[0]];</p>
+<p class="p1"><span class="Apple-converted-space">                </span>showFinalScreen();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function restartGame() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>teams = [];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>activeTeams = [];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>isSuddenDeath = false;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>teamsList.innerHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>teamNameInput.value = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showScreen('rules-screen');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>continueToDifficultyBtn.disabled = true;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>modal.style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function drawSurpriseCard(forced = false) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>stopTimer();</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const cards = [</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{ name: "Bênção Divina!", description: "Sua fé foi recompensada! Ganhe 200 pontos.", action: "bonus_points", value: 200 },</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{ name: "Prova de Fé", description: "Que pena! Você perdeu 100 pontos em sua provação.", action: "lose_points", value: 100 },</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{ name: "Oferta Voluntária", description: "Dê 100 dos seus pontos para a equipe com a menor pontuação.", action: "give_to_last" },</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{ name: "O Bom Samaritano", description: "Escolha uma equipe para dar 150 dos seus pontos.", action: "give_points", value: 150 },</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{ name: "Jubileu!", description: "Troque sua pontuação com a equipe que está em primeiro lugar!", action: "swap_with_first" },</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{ name: "Coleta Especial", description: "Escolha uma equipe para coletar 150 pontos.", action: "steal_points", value: 150 }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const randomCard = cards[Math.floor(Math.random() * cards.length)];</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>surpriseSound.triggerAttackRelease("0.4s");</p>
+<p class="p1"><span class="Apple-converted-space">            </span>modalTitle.textContent = "Sorteando a Surpresa...";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>modalTitle.className = "text-2xl font-bold text-[#6d4c41] mb-4";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>modalDescription.innerHTML = `&lt;div class="flex justify-center items-center h-24"&gt;&lt;div class="card-shuffle-animation"&gt;📜&lt;/div&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>modalOptions.innerHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>modalClose.style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>modal.style.display = 'flex';</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>setTimeout(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>if (forced) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>activeTeams[currentTeamIndex].hasUsedSurprise = true;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>modalTitle.textContent = "Uso Obrigatório de Surpresa!";</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>modalDescription.innerHTML = `Sua equipe chegou à última rodada sem usar a surpresa. Uma carta foi puxada automaticamente: &lt;strong class="block text-2xl mt-2"&gt;${randomCard.name}&lt;/strong&gt;.`;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>modalOptions.innerHTML = '';<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const okBtn = document.createElement('button');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>okBtn.textContent = 'OK';</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>okBtn.classList.add('btn', 'bg-[#8d6e63]', 'hover:bg-[#6d4c41]', 'w-full', 'p-3', 'text-white');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>okBtn.onclick = () =&gt; executeCardAction(randomCard);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>modalOptions.appendChild(okBtn);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>executeCardAction(randomCard);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}, 1500);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function showCardResultInModal(resultText) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>modalTitle.className = "text-4xl md:text-5xl font-bold text-[#6d4c41] mb-4";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>modalDescription.innerHTML = resultText;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>modalOptions.innerHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>modalClose.style.display = 'none';</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const okBtn = document.createElement('button');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>okBtn.textContent = 'OK';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>okBtn.classList.add('btn', 'bg-[#8d6e63]', 'hover:bg-[#6d4c41]', 'w-full', 'p-3', 'text-white');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>okBtn.onclick = closeModalAndContinue;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>modalOptions.appendChild(okBtn);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>modal.style.display = 'flex';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function executeCardAction(card) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>activeTeams[currentTeamIndex].hasUsedSurprise = true;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>surpriseCardBtn.disabled = true;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>modalTitle.className = "text-4xl md:text-5xl font-bold text-[#6d4c41] mb-4";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>modalTitle.textContent = card.name;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>modalDescription.innerHTML = card.description;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>modalOptions.innerHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>modalClose.style.display = 'block';</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const currentTeam = activeTeams[currentTeamIndex];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>let resultText = "";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>switch(card.action) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>case "steal_points":</p>
+<p class="p1"><span class="Apple-converted-space">                </span>case "give_points":</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>modalClose.style.display = 'none';<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>modalOptions.innerHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>teams.forEach((team) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>if (team.name === currentTeam.name) return;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                        </span>const teamBtn = document.createElement('button');</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>teamBtn.textContent = team.name;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>teamBtn.classList.add('btn', 'bg-[#795548]', 'hover:bg-[#5d4037]', 'text-white', 'p-3');</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>teamBtn.onclick = () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>if (card.action === "steal_points") {</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>const stolen = Math.min(card.value, team.score);</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>team.score -= stolen;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>currentTeam.score += stolen;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>resultText = `${currentTeam.name} coletou ${stolen} pontos de ${team.name}!`;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>if (card.action === "give_points") {</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>const given = Math.min(card.value, currentTeam.score);</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>currentTeam.score -= given;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>team.score += given;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>resultText = `${currentTeam.name} ofertou ${given} pontos para ${team.name}!`;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>updateScoreboard();</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>showCardResultInModal(resultText);</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>};</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>modalOptions.appendChild(teamBtn);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>break;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>case "give_to_last":</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const sortedGive = [...teams].filter(t =&gt; t.name !== currentTeam.name).sort((a,b) =&gt; a.score - b.score);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const lastPlaceTeamGive = sortedGive[0];</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (lastPlaceTeamGive) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>const given = Math.min(100, currentTeam.score);</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>currentTeam.score -= given;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>lastPlaceTeamGive.score += given;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>resultText = `${currentTeam.name} ajudou ${lastPlaceTeamGive.name} com ${given} pontos!`;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                         </span>resultText = "Não há outras equipes para ajudar! Nada acontece.";</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>updateScoreboard();</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>showCardResultInModal(resultText);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>break;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>case "swap_with_first":</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const sortedSwap = [...teams].filter(t =&gt; t.name !== currentTeam.name).sort((a,b) =&gt; b.score - a.score);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const firstPlaceTeam = sortedSwap[0];</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (firstPlaceTeam &amp;&amp; firstPlaceTeam.score &gt; currentTeam.score) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>[currentTeam.score, firstPlaceTeam.score] = [firstPlaceTeam.score, currentTeam.score];</p>
+<p class="p1"><span class="Apple-converted-space">                         </span>resultText = `${currentTeam.name} trocou de pontuação com o líder ${firstPlaceTeam.name}!`;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>resultText = "Não há um líder com mais pontos para trocar! Nada acontece.";</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>updateScoreboard();</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>showCardResultInModal(resultText);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>break;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>case "bonus_points":</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>currentTeam.score += card.value;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>resultText = `Bênção recebida! +${card.value} pontos!`;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>updateScoreboard();</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>showCardResultInModal(resultText);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>break;</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>case "lose_points":</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>currentTeam.score = Math.max(0, currentTeam.score - card.value);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>resultText = `Que provação! -${card.value} pontos!`;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>updateScoreboard();</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>showCardResultInModal(resultText);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>break;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function closeModalAndContinue() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>modal.style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>setTimeout(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>selectAnswer(-1);<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>}, 500);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function openRulesModal() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>clickSound.triggerAttackRelease("C3", "0.1s");</p>
+<p class="p1"><span class="Apple-converted-space">            </span>modalTitle.className = "text-2xl font-bold text-[#6d4c41] mb-4";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>modalTitle.textContent = "Regras do Jogo";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>modalDescription.innerHTML = document.getElementById('rules-container').innerHTML;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>modalDescription.querySelector('h3').style.display = 'none';<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>modalOptions.innerHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>modalClose.style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>modal.style.display = 'flex';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function openRestartModal() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>clickSound.triggerAttackRelease("C3", "0.1s");</p>
+<p class="p1"><span class="Apple-converted-space">            </span>modalTitle.className = "text-2xl font-bold text-[#6d4c41] mb-4";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>modalTitle.textContent = "Reiniciar o Jogo?";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>modalDescription.innerHTML = "&lt;p class='text-center'&gt;Tem certeza de que deseja reiniciar o jogo? Todo o progresso será perdido.&lt;/p&gt;";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>modalOptions.innerHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>modalClose.style.display = 'none';</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const confirmBtn = document.createElement('button');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>confirmBtn.textContent = 'Sim, Reiniciar';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>confirmBtn.classList.add('btn', 'bg-red-700', 'hover:bg-red-600', 'text-white', 'w-full', 'p-3');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>confirmBtn.onclick = restartGame;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const cancelBtn = document.createElement('button');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cancelBtn.textContent = 'Cancelar';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cancelBtn.classList.add('btn', 'bg-stone-600', 'hover:bg-stone-700', 'text-white', 'w-full', 'p-3');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cancelBtn.onclick = () =&gt; modal.style.display = 'none';</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>modalOptions.appendChild(confirmBtn);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>modalOptions.appendChild(cancelBtn);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>modal.style.display = 'flex';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// --- EVENT LISTENERS ---</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.addEventListener('DOMContentLoaded', setupSounds);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>addTeamBtn.addEventListener('click', addTeam);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>teamNameInput.addEventListener('keypress', (e) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (e.key === 'Enter') addTeam();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>continueToDifficultyBtn.addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showScreen('difficulty-screen');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>easyBtn.addEventListener('click', () =&gt; startGame('easy'));</p>
+<p class="p1"><span class="Apple-converted-space">        </span>hardBtn.addEventListener('click', () =&gt; startGame('hard'));</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>restartBtn.addEventListener('click', restartGame);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>openRulesBtn.addEventListener('click', openRulesModal);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>openRestartBtn.addEventListener('click', openRestartModal);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>surpriseCardBtn.addEventListener('click', () =&gt; drawSurpriseCard(false));</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>goToTeamsBtn.addEventListener('click', async () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>await Tone.start();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>clickSound.triggerAttackRelease("C3", "0.1s");</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showScreen('teams-screen');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>backToRulesBtn.addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>clickSound.triggerAttackRelease("C3", "0.1s");</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showScreen('rules-screen');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>backToTeamsBtn.addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>clickSound.triggerAttackRelease("C3", "0.1s");</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showScreen('teams-screen');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>modalClose.onclick = () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">             </span>modal.style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">             </span>if (!isSuddenDeath &amp;&amp; activeTeams.length &gt; 0) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>optionsContainer.childNodes.forEach(btn =&gt; btn.disabled = false);</p>
+<p class="p1"><span class="Apple-converted-space">             </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
