@@ -2128,6 +2128,77 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
+
+<script>
+function showScreen(screenId) {
+  const screens = ['rules-screen', 'teams-screen', 'difficulty-screen', 'game-screen', 'end-screen'];
+  screens.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.display = (id === screenId) ? 'block' : 'none';
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Botão: Regras -> Equipes
+  const goToTeams = document.getElementById('go-to-teams-btn');
+  if (goToTeams) goToTeams.onclick = () => showScreen('teams-screen');
+
+  // Botão: Equipes -> Regras
+  const backToRules = document.getElementById('back-to-rules-btn');
+  if (backToRules) backToRules.onclick = () => showScreen('rules-screen');
+
+  // Lógica: Habilitar Continuar só quando tiver 2 a 5 equipes
+  const addTeamBtn = document.getElementById('add-team-btn');
+  const teamNameInput = document.getElementById('team-name-input');
+  const teamsList = document.getElementById('teams-list');
+  const continueBtn = document.getElementById('continue-to-difficulty-btn');
+  let teams = [];
+
+  if (addTeamBtn && teamNameInput && teamsList && continueBtn) {
+    addTeamBtn.onclick = () => {
+      const name = teamNameInput.value.trim();
+      if (name && teams.length < 5) {
+        teams.push(name);
+        const p = document.createElement('p');
+        p.textContent = name;
+        teamsList.appendChild(p);
+        teamNameInput.value = '';
+        if (teams.length >= 2) {
+          continueBtn.disabled = false;
+        }
+      }
+    };
+  }
+
+  // Botão: Equipes -> Dificuldade
+  if (continueBtn) continueBtn.onclick = () => showScreen('difficulty-screen');
+
+  // Botão: Dificuldade -> Jogo
+  const easyBtn = document.getElementById('easy-btn');
+  const hardBtn = document.getElementById('hard-btn');
+  if (easyBtn) easyBtn.onclick = () => showScreen('game-screen');
+  if (hardBtn) hardBtn.onclick = () => showScreen('game-screen');
+
+  // Botão: Dificuldade -> Voltar para Equipes
+  const backToTeams = document.getElementById('back-to-teams-btn');
+  if (backToTeams) backToTeams.onclick = () => showScreen('teams-screen');
+
+  // Simulação: Dentro do game-screen, vamos criar um botão de ir pro fim (Exemplo)
+  const actionContainer = document.getElementById('action-container');
+  if (actionContainer) {
+    const toEndBtn = document.createElement('button');
+    toEndBtn.textContent = 'Ir pro Fim (Teste)';
+    toEndBtn.className = 'btn bg-red-500 text-white py-2 px-4';
+    toEndBtn.onclick = () => showScreen('end-screen');
+    actionContainer.appendChild(toEndBtn);
+  }
+
+  // Botão: Fim -> Voltar pro início
+  const restartBtn = document.getElementById('restart-btn');
+  if (restartBtn) restartBtn.onclick = () => showScreen('rules-screen');
+});
+</script>
+
 </body></p>
 <p class="p1"></html></p>
 
@@ -2153,6 +2224,77 @@ document.addEventListener('DOMContentLoaded', function() {
 
   const backToTeams = document.getElementById('back-to-teams-btn');
   if (backToTeams) backToTeams.onclick = () => showScreen('teams-screen');
+});
+</script>
+
+
+<script>
+function showScreen(screenId) {
+  const screens = ['rules-screen', 'teams-screen', 'difficulty-screen', 'game-screen', 'end-screen'];
+  screens.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.display = (id === screenId) ? 'block' : 'none';
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Botão: Regras -> Equipes
+  const goToTeams = document.getElementById('go-to-teams-btn');
+  if (goToTeams) goToTeams.onclick = () => showScreen('teams-screen');
+
+  // Botão: Equipes -> Regras
+  const backToRules = document.getElementById('back-to-rules-btn');
+  if (backToRules) backToRules.onclick = () => showScreen('rules-screen');
+
+  // Lógica: Habilitar Continuar só quando tiver 2 a 5 equipes
+  const addTeamBtn = document.getElementById('add-team-btn');
+  const teamNameInput = document.getElementById('team-name-input');
+  const teamsList = document.getElementById('teams-list');
+  const continueBtn = document.getElementById('continue-to-difficulty-btn');
+  let teams = [];
+
+  if (addTeamBtn && teamNameInput && teamsList && continueBtn) {
+    addTeamBtn.onclick = () => {
+      const name = teamNameInput.value.trim();
+      if (name && teams.length < 5) {
+        teams.push(name);
+        const p = document.createElement('p');
+        p.textContent = name;
+        teamsList.appendChild(p);
+        teamNameInput.value = '';
+        if (teams.length >= 2) {
+          continueBtn.disabled = false;
+        }
+      }
+    };
+  }
+
+  // Botão: Equipes -> Dificuldade
+  if (continueBtn) continueBtn.onclick = () => showScreen('difficulty-screen');
+
+  // Botão: Dificuldade -> Jogo
+  const easyBtn = document.getElementById('easy-btn');
+  const hardBtn = document.getElementById('hard-btn');
+  if (easyBtn) easyBtn.onclick = () => showScreen('game-screen');
+  if (hardBtn) hardBtn.onclick = () => showScreen('game-screen');
+
+  // Botão: Dificuldade -> Voltar para Equipes
+  const backToTeams = document.getElementById('back-to-teams-btn');
+  if (backToTeams) backToTeams.onclick = () => showScreen('teams-screen');
+
+  // Simulação: Dentro do game-screen, vamos criar um botão de ir pro fim (Exemplo)
+  const actionContainer = document.getElementById('action-container');
+  if (actionContainer) {
+    const toEndBtn = document.createElement('button');
+    toEndBtn.textContent = 'Ir pro Fim (Teste)';
+    toEndBtn.className = 'btn bg-red-500 text-white py-2 px-4';
+    toEndBtn.onclick = () => showScreen('end-screen');
+    actionContainer.appendChild(toEndBtn);
+  }
+
+  // Botão: Fim -> Voltar pro início
+  const restartBtn = document.getElementById('restart-btn');
+  if (restartBtn) restartBtn.onclick = () => showScreen('rules-screen');
 });
 </script>
 
