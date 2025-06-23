@@ -15,6 +15,16 @@
     p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px
     Helvetica; min-height: 14.0px}
   </style>
+
+<style>
+  #rules-screen, #teams-screen, #difficulty-screen, #game-screen, #end-screen {
+    display: none;
+  }
+  #rules-screen {
+    display: block;
+  }
+</style>
+
 </head>
 <body>
 <p class="p1"><!DOCTYPE html></p>
@@ -165,7 +175,17 @@
 <p class="p1"><span class="Apple-converted-space">        </span>}</p>
 <p class="p1"><span class="Apple-converted-space">   
     </span></style></p>
-<p class="p1"></head></p>
+<p class="p1">
+<style>
+  #rules-screen, #teams-screen, #difficulty-screen, #game-screen, #end-screen {
+    display: none;
+  }
+  #rules-screen {
+    display: block;
+  }
+</style>
+
+</head></p>
 <p class="p1"><body class="min-h-screen flex items-center justify-center
     p-4"></p>
 <p class="p2"><br></p>
@@ -2082,7 +2102,59 @@
 <p class="p2"><br></p>
 <p class="p1"><span class="Apple-converted-space">   
     </span></script></p>
-<p class="p1"></body></p>
+<p class="p1">
+<script>
+function showScreen(screenId) {
+  const screens = ['rules-screen', 'teams-screen', 'difficulty-screen', 'game-screen', 'end-screen'];
+  screens.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.display = (id === screenId) ? 'block' : 'none';
+  });
+}
+
+// Exemplo: eventos dos botões
+document.addEventListener('DOMContentLoaded', function() {
+  const goToTeams = document.getElementById('go-to-teams-btn');
+  if (goToTeams) goToTeams.onclick = () => showScreen('teams-screen');
+
+  const backToRules = document.getElementById('back-to-rules-btn');
+  if (backToRules) backToRules.onclick = () => showScreen('rules-screen');
+
+  const continueToDifficulty = document.getElementById('continue-to-difficulty-btn');
+  if (continueToDifficulty) continueToDifficulty.onclick = () => showScreen('difficulty-screen');
+
+  const backToTeams = document.getElementById('back-to-teams-btn');
+  if (backToTeams) backToTeams.onclick = () => showScreen('teams-screen');
+});
+</script>
+
+</body></p>
 <p class="p1"></html></p>
+
+<script>
+function showScreen(screenId) {
+  const screens = ['rules-screen', 'teams-screen', 'difficulty-screen', 'game-screen', 'end-screen'];
+  screens.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.display = (id === screenId) ? 'block' : 'none';
+  });
+}
+
+// Exemplo: eventos dos botões
+document.addEventListener('DOMContentLoaded', function() {
+  const goToTeams = document.getElementById('go-to-teams-btn');
+  if (goToTeams) goToTeams.onclick = () => showScreen('teams-screen');
+
+  const backToRules = document.getElementById('back-to-rules-btn');
+  if (backToRules) backToRules.onclick = () => showScreen('rules-screen');
+
+  const continueToDifficulty = document.getElementById('continue-to-difficulty-btn');
+  if (continueToDifficulty) continueToDifficulty.onclick = () => showScreen('difficulty-screen');
+
+  const backToTeams = document.getElementById('back-to-teams-btn');
+  if (backToTeams) backToTeams.onclick = () => showScreen('teams-screen');
+});
+</script>
+
 </body>
 </html>
